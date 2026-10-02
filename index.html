@@ -5,32 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NELEIRA | Research · Analysis · Documentation</title>
+  <title>NELEIRA | Ricerca · Analisi · Documentazione</title>
 
-  <meta
-    name="description"
-    content="NELEIRA — Ricerca, analisi e documentazione professionale."
-  >
+  <meta name="description"
+        content="NELEIRA è un progetto professionale dedicato alla ricerca, all'analisi e alla documentazione.">
 
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#171717">
 
   <style>
-
     :root {
-      --black: #080808;
-      --black-soft: #111111;
-      --black-card: #171717;
-
-      --gold: #c9a45c;
-      --gold-light: #e4c987;
-      --gold-dark: #9d7938;
-
+      --black: #171717;
+      --dark: #222222;
+      --text: #343434;
+      --muted: #777777;
+      --light: #f5f3ef;
       --white: #ffffff;
-      --white-soft: #f5f5f3;
-      --gray: #b7b7b7;
-      --gray-dark: #777777;
-
-      --border: rgba(201,164,92,0.28);
+      --accent: #9b7b55;
+      --accent-dark: #765c3e;
+      --line: #dedbd5;
     }
 
     * {
@@ -45,10 +37,9 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--black);
-      color: var(--white);
+      color: var(--text);
+      background: var(--white);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
     a {
@@ -56,16 +47,9 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    select,
-    textarea {
-      font-family: inherit;
-    }
-
     /* =========================
        HEADER
-    ========================== */
+    ========================= */
 
     header {
       position: fixed;
@@ -73,19 +57,16 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-
-      background: rgba(8,8,8,0.94);
-      backdrop-filter: blur(14px);
-
-      border-bottom: 1px solid rgba(201,164,92,0.18);
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
     .nav {
-      max-width: 1280px;
-      height: 88px;
+      max-width: 1180px;
       margin: auto;
-      padding: 0 35px;
-
+      height: 82px;
+      padding: 0 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -93,117 +74,748 @@
 
     .logo {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      letter-spacing: 8px;
-      color: var(--white);
-      font-weight: 400;
-    }
-
-    .logo small {
-      display: block;
-      margin-top: 3px;
-
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 7px;
-      letter-spacing: 3px;
-
-      color: var(--gold);
+      font-size: 29px;
+      letter-spacing: 7px;
+      font-weight: 600;
+      color: var(--black);
     }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 34px;
+      list-style: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .menu a {
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #e7e7e7;
+      position: relative;
+      padding: 8px 0;
+    }
 
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
       transition: 0.3s ease;
     }
 
-    .menu a:hover {
-      color: var(--gold-light);
+    .menu a:hover::after {
+      width: 100%;
     }
 
-    .menu-contact {
-      border: 1px solid var(--gold);
-      padding: 12px 19px;
-      color: var(--gold-light) !important;
+    .menu-button {
+      border: 1px solid var(--black);
+      padding: 11px 18px !important;
+      transition: 0.3s ease;
     }
 
-    .menu-contact:hover {
-      background: var(--gold);
-      color: var(--black) !important;
+    .menu-button:hover {
+      background: var(--black);
+      color: white;
     }
 
     /* =========================
        HERO
-    ========================== */
+    ========================= */
 
     .hero {
       min-height: 100vh;
-      position: relative;
+      padding: 150px 30px 90px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 25%, rgba(155,123,85,0.12), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f5f3ef 100%);
+    }
 
+    .hero-inner {
+      max-width: 1180px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent-dark);
+      margin-bottom: 25px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: 0.95;
+      font-weight: 500;
+      letter-spacing: 8px;
+      color: var(--black);
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: 0.27em;
+      letter-spacing: 6px;
+      margin-top: 24px;
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+    }
+
+    .hero-text {
+      max-width: 620px;
+      font-size: 19px;
+      color: #555;
+      margin-bottom: 38px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 25px;
+      border: 1px solid var(--black);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    .hero-mark {
+      min-height: 470px;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(201,164,92,0.10),
-          transparent 34%
-        ),
-        #080808;
     }
 
-    .hero::before {
+    .mark-circle {
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(155,123,85,0.55);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mark-circle::before,
+    .mark-circle::after {
       content: "";
       position: absolute;
-
-      width: 620px;
-      height: 620px;
-
-      border: 1px solid rgba(201,164,92,0.16);
+      border: 1px solid rgba(155,123,85,0.25);
       border-radius: 50%;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%, -50%);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-
-      width: 470px;
-      height: 470px;
-
-      border: 1px solid rgba(201,164,92,0.11);
-      border-radius: 50%;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%, -50%);
+    .mark-circle::before {
+      inset: 30px;
     }
 
-    .hero-content {
+    .mark-circle::after {
+      inset: 70px;
+    }
+
+    .mark-inner {
+      text-align: center;
       position: relative;
       z-index: 2;
-
-      text-align: center;
-
-      max-width: 1000px;
-      padding: 140px 25px 100px;
     }
 
-    .hero
+    .mark-inner strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 72px;
+      letter-spacing: 10px;
+      font-weight: 500;
+    }
+
+    .mark-inner small {
+      display: block;
+      margin-top: 10px;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--accent-dark);
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    section {
+      padding: 110px 30px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.05;
+      font-weight: 500;
+      color: var(--black);
+      max-width: 760px;
+      margin-bottom: 25px;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* =========================
+       CHI SIAMO
+    ========================= */
+
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      margin-top: 65px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .about-text p + p {
+      margin-top: 22px;
+    }
+
+    .quote {
+      border-left: 2px solid var(--accent);
+      padding: 20px 0 20px 30px;
+      font-family: Georgia, serif;
+      font-size: 27px;
+      line-height: 1.35;
+      color: var(--black);
+    }
+
+    /* =========================
+       ATTIVITÀ
+    ========================= */
+
+    .activities {
+      background: var(--light);
+    }
+
+    .cards {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .card {
+      background: var(--light);
+      padding: 45px 35px;
+      min-height: 290px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      background: white;
+      transform: translateY(-5px);
+    }
+
+    .card-number {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 45px;
+    }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       METODO
+    ========================= */
+
+    .method {
+      background: var(--black);
+      color: white;
+    }
+
+    .method .section-label {
+      color: #c9aa84;
+    }
+
+    .method .section-title {
+      color: white;
+    }
+
+    .method .section-intro {
+      color: #bcbcbc;
+    }
+
+    .steps {
+      margin-top: 65px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid #444;
+    }
+
+    .step {
+      padding: 35px 25px 20px 0;
+      border-right: 1px solid #444;
+      margin-right: 25px;
+    }
+
+    .step:last-child {
+      border-right: none;
+    }
+
+    .step-number {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #c9aa84;
+      margin-bottom: 35px;
+    }
+
+    .step h3 {
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* =========================
+       AMBITI
+    ========================= */
+
+    .fields {
+      background: var(--white);
+    }
+
+    .fields-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .field {
+      padding: 28px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .field:nth-child(odd) {
+      border-right: 1px solid var(--line);
+      padding-right: 35px;
+    }
+
+    .field:nth-child(even) {
+      padding-left: 35px;
+    }
+
+    .field span {
+      font-family: Georgia, serif;
+      font-size: 21px;
+    }
+
+    .field small {
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    /* =========================
+       CONTATTI
+    ========================= */
+
+    .contact {
+      background: var(--light);
+    }
+
+    .contact-grid {
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .contact-email {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: var(--black);
+      word-break: break-word;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #bbb;
+      background: transparent;
+      padding: 14px 0;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      outline: none;
+      color: var(--black);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    form button {
+      justify-self: start;
+      cursor: pointer;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111;
+      color: white;
+      padding: 50px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      letter-spacing: 5px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 25px;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav {
+        height: 72px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 23px;
+        letter-spacing: 5px;
+      }
+
+      .menu {
+        gap: 15px;
+        font-size: 10px;
+      }
+
+      .menu li:nth-child(1),
+      .menu li:nth-child(2),
+      .menu li:nth-child(3) {
+        display: none;
+      }
+
+      .menu-button {
+        padding: 9px 13px !important;
+      }
+
+      .hero {
+        padding: 125px 22px 70px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .hero h1 {
+        font-size: clamp(55px, 17vw, 90px);
+        letter-spacing: 5px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .hero-mark {
+        min-height: 300px;
+      }
+
+      .mark-circle {
+        width: 270px;
+        height: 270px;
+      }
+
+      .mark-inner strong {
+        font-size: 55px;
+      }
+
+      section {
+        padding: 80px 22px;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-right: none;
+        border-bottom: 1px solid #444;
+        padding: 30px 0;
+        margin: 0;
+      }
+
+      .step:last-child {
+        border-bottom: none;
+      }
+
+      .fields-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field:nth-child(odd) {
+        border-right: none;
+        padding-right: 20px;
+      }
+
+      .field:nth-child(even) {
+        padding-left: 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <nav class="nav">
+
+      <a href="#home" class="logo">NELEIRA</a>
+
+      <ul class="menu">
+        <li><a href="#chi-siamo">Il progetto</a></li>
+        <li><a href="#attivita">Attività</a></li>
+        <li><a href="#metodo">Metodo</a></li>
+        <li><a href="#contatti" class="menu-button">Contatti</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="hero-inner">
+
+        <div>
+
+          <div class="eyebrow">
+            Progetto professionale
+          </div>
+
+          <h1>
+            NELEIRA
+            <span>RICERCA · ANALISI · DOCUMENTAZIONE</span>
+          </h1>
+
+          <p class="hero-text">
+            Un approccio strutturato alla ricerca e all'analisi delle
+            informazioni, con attenzione alla verifica delle fonti,
+            all'organizzazione dei dati e alla documentazione.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#attivita" class="btn btn-primary">
+              Scopri il progetto
+            </a>
+
+            <a href="#contatti" class="btn btn-secondary">
+              Contatti
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="hero-mark">
+
+          <div class="mark-circle">
+
+            <div class="mark-inner">
+              <strong>N</strong>
+              <small>RESEARCH · ANALYSIS</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHI SIAMO -->
+
+    <section class="about" id="chi-siamo">
+
+      <div class="container">
+
+        <div class="section-label">
+          01 — NELEIRA
+        </div>
+
+        <h2 class="section-title">
+          Ricercare significa andare oltre la superficie.
+        </h2>
+
+        <
 ```
